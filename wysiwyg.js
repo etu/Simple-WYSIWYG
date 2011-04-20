@@ -4,7 +4,7 @@
 			toolbar: true,
 		}, 
 		_create: function() {
-			var self = this.element;
+			var self  = this.element;
 			self.addClass("ui-widget ui-widget-wysiwyg").hide();
 			
 			var value = self.val();
@@ -41,11 +41,11 @@
 				var buttons = [{label: "Bold", style: "font-weight: bold;", name: 'bold'},
 							   {label: "Italic", style: "font-style:  italic;", name: 'italic'},
 							   {label: "Underline", style: "text-decoration: underline;", name: 'underline'},
-							   {label: "HTML", style: "", name: "html"}];
+							   {label: "HTML", style: "float: right;", name: "html"}];
 			
 				for(var i = 0; i < buttons.length; i++) {
 					var contents = '<input type="button" id="ui_toolbar_button_' + buttons[i].name + '" value="' + buttons[i].label + '" style="' + buttons[i].style + '" />';
-					contents    += '<span class="ui-separator"></span>';
+					contents    += '<span class="ui-separator" style="' + buttons[i].style + '"></span>';
 					
 					toolbar.html(toolbar.html() + contents);
 					//toolbar.buttonset();
