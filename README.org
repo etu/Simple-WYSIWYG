@@ -1,0 +1,6 @@
+
+* Simple WYSIWYG
+
+The plan is to have a Simple WYSIWYG, with just a few features.
+
+One goal is to not generate alot of crap.
