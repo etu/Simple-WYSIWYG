@@ -4,3 +4,14 @@
 The plan is to have a Simple WYSIWYG, with just a few features.
 
 One goal is to not generate alot of crap.
+
+** Usage
+
+<textarea id="wysiwyg"></textarea>
+
+and
+
+$("#wysiwyg").wysiwyg();
+
+
+Requires you to load in jquery and jquery ui before, and widgets maybe.
