@@ -104,15 +104,17 @@
 				});
 				$('#ui_toolbar_button_int_url').click(function () {
 					var int_url   = prompt('Enter Internal URL:');
-					var int_label = prompt('Enter URL label:');
-					
-					insertUrl(int_url, int_label, '/');
+					if(int_url != null) {
+						var int_label = prompt('Enter URL label:');
+						insertUrl(int_url, int_label, '/');
+					}
 				});
 				$('#ui_toolbar_button_ext_url').click(function () {
-					var int_url   = prompt('Enter External URL:');
-					var int_label = prompt('Enter URL label:');
-					
-					insertUrl(int_url, int_label, 'http://');
+					var ext_url   = prompt('Enter External URL:');
+					if(int_url != null) {
+						var ext_label = prompt('Enter URL label:');
+						insertUrl(ext_url, ext_label, 'http://');
+					}
 				});
 				
 				function doBold() {
