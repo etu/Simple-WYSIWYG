@@ -65,7 +65,7 @@
 					],[
 						{label: 'HTML', style: 'float: right;', name: 'html', title: 'Switch too...'}
 					],[
-						{label: 'Internal URL', style: '', name: 'local_url', title: 'Internal URL'},
+						{label: 'Internal URL', style: '', name: 'int_url', title: 'Internal URL'},
 						{label: 'External URL', style: '', name: 'ext_url', title: 'External URL'},
 					]
 				];
@@ -102,6 +102,18 @@
 				$('#ui_toolbar_button_underline').click(function () {
 					doUnderline();
 				});
+				$('#ui_toolbar_button_int_url').click(function () {
+					var int_url   = prompt('Enter Internal URL:');
+					var int_label = prompt('Enter URL label:');
+					
+					insertUrl(int_url, int_label, '/');
+				});
+				$('#ui_toolbar_button_ext_url').click(function () {
+					var int_url   = prompt('Enter External URL:');
+					var int_label = prompt('Enter URL label:');
+					
+					insertUrl(int_url, int_label, 'http://');
+				});
 				
 				function doBold() {
 					document.execCommand('bold', false, null);
@@ -117,6 +129,14 @@
 					document.execCommand('underline', false, null);
 					canvas.trigger('keyup');
 					canvas.focus();
+				}
+				function insertUrl(location, label, prefix) {
+					if(label == null)
+						label = 'Click here';
+					
+					var url = '.<a href="' + prefix + location + '">' + label + '</a>.';
+					self.text(self.text() + url);
+					self.trigger('keyup');
 				}
 			}
 		}, 
