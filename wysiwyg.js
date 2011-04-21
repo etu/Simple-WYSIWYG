@@ -1,3 +1,15 @@
+/**
+ * @name Simple-WYSIWYG
+ * @description Simple-WYSIWYG is a jQueryUi plugin to turn a textarea into a simple wysiwyg.
+ * @version 0.9
+ * @requres jQuery + jQuery UI
+ * 
+ * @author Elis Axelsson
+ * @author-email elis.axelsson@gmail.com
+ * 
+ * @license WTFPL - http://sam.zoy.org/wtfpl/COPYING
+ */
+
 (function($) {
 	$.widget('ui.wysiwyg', {
 		options: {
