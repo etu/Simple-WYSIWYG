@@ -1,15 +1,15 @@
 (function($) {
-	$.widget("ui.wysiwyg", {
+	$.widget('ui.wysiwyg', {
 		options: {
 			toolbar: true
 		}, 
 		_create: function() {
 			var self  = this.element;
-			self.addClass("ui-widget ui-widget-wysiwyg").hide();
+			self.addClass('ui-widget ui-widget-wysiwyg').hide();
 			
 			var value = self.val();
-			var canvas = this.canvas = $("<div></div>").insertAfter(self).html(value).addClass("ui-widget ui-widget-wysiwyg")
-				.attr({contenteditable: true, hideFocus: true, id: self.attr("id")+"_canvas"});
+			var canvas = this.canvas = $('<div></div>').insertAfter(self).html(value).addClass('ui-widget ui-widget-wysiwyg')
+				.attr({contenteditable: true, hideFocus: true, id: self.attr('id') + '_canvas'});
 			
 			// Cleanerfunction to remove/add <br(| /)> and to remove <div></div> in chrom(e|ium)
 			function clean(str, mode) {
@@ -55,15 +55,18 @@
 			});
 			
 			if(this.options.toolbar) {
-				var toolbar = $("<div></div>").insertBefore(self).addClass("ui-widget ui-toolbar")
-					.attr({id: self.attr("id") + "_toolbar"});
+				var toolbar = $('<div></div>').insertBefore(self).addClass('ui-widget ui-toolbar')
+					.attr({id: self.attr('id') + '_toolbar'});
 				var buttons = [
 					[
-						{label: "B", style: "font-weight: bold;", name: 'bold', title: 'Bold (Ctrl + B)'},
-						{label: "I", style: "font-style: italic;", name: 'italic', title: 'Italic (Ctrl + I)'},
-						{label: "U", style: "text-decoration: underline;", name: 'underline', title: 'Underline (Ctrl + U)'}
+						{label: 'B', style: 'font-weight: bold;', name: 'bold', title: 'Bold (Ctrl + B)'},
+						{label: 'I', style: 'font-style: italic;', name: 'italic', title: 'Italic (Ctrl + I)'},
+						{label: 'U', style: 'text-decoration: underline;', name: 'underline', title: 'Underline (Ctrl + U)'}
 					],[
-						{label: "HTML", style: "float: right;", name: 'html', title: ''}
+						{label: 'HTML', style: 'float: right;', name: 'html', title: 'Switch too...'}
+					],[
+						{label: 'Internal URL', style: '', name: 'local_url', title: 'Internal URL'},
+						{label: 'External URL', style: '', name: 'ext_url', title: 'External URL'},
 					]
 				];
 				
@@ -81,22 +84,22 @@
  				}
 				toolbar.children().buttonset();
 				
-				$("#ui_toolbar_button_html").click(function () {
+				$('#ui_toolbar_button_html').click(function () {
 					self.toggle();
 					canvas.toggle();
-					if($(this).children().text() == "HTML") {
-						$(this).children().text("Richtext");
+					if($(this).children().text() == 'HTML') {
+						$(this).children().text('Richtext');
 					} else {
-						$(this).children().text("HTML");
+						$(this).children().text('HTML');
 					}
 				});
-				$("#ui_toolbar_button_bold").click(function () {
+				$('#ui_toolbar_button_bold').click(function () {
 					doBold();
 				});
-				$("#ui_toolbar_button_italic").click(function () {
+				$('#ui_toolbar_button_italic').click(function () {
 					doItalic();
 				});
-				$("#ui_toolbar_button_underline").click(function () {
+				$('#ui_toolbar_button_underline').click(function () {
 					doUnderline();
 				});
 				
