@@ -57,19 +57,17 @@
 				});
 				
 				$("#ui_toolbar_button_bold").click(function () {
-					applyTags('<strong>', '</strong>');
+					document.execCommand('bold', false, null);
+					canvas.trigger('keyup');
 				});
 				$("#ui_toolbar_button_italic").click(function () {
-					applyTags('<em>', '</em>');
+					document.execCommand('italic', false, null);
+					canvas.trigger('keyup');
 				});
 				$("#ui_toolbar_button_underline").click(function () {
-					applyTags('<u>', '</u>');
+					document.execCommand('underline', false, null);
+					canvas.trigger('keyup');
 				});
-			}
-			
-			function applyTags(tag1, tag2) {
-				var sel = window.getSelection();
-				console.log(sel);
 			}
 		}, 
 		_destroy: function() {
