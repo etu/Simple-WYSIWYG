@@ -68,17 +68,18 @@
 				];
 				
 				for(var i = 0; i < buttons.length; i++) {
+					var contents = '<span class="ui-buttonset">';
 					for(var j = 0; j < buttons[i].length; j++) {
-						var contents = '<button id="ui_toolbar_button_' + buttons[i][j].name + '" style="'
+						contents += '<button id="ui_toolbar_button_' + buttons[i][j].name + '" style="'
 							+ buttons[i][j].style + '" title="' + buttons[i][j].title + '">' + buttons[i][j].label + '</button>';
-						
-						toolbar.html(toolbar.html() + contents);
 					}
 					var num = j - 1;
+					contents += '</span>';
+					contents += '<span class="ui-separator" style="' + buttons[i][num].style + '"></span>';
 					
-					toolbar.html(toolbar.html() + '<span class="ui-separator" style="' + buttons[i][num].style + '"></span>');
+					toolbar.html(toolbar.html() + contents);
  				}
-				toolbar.buttonset();
+				toolbar.children().buttonset();
 				
 				$("#ui_toolbar_button_html").click(function () {
 					self.toggle();
