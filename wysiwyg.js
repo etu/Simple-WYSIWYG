@@ -1,7 +1,7 @@
 (function($) {
 	$.widget("ui.wysiwyg", {
 		options: {
-			toolbar: true,
+			toolbar: true
 		}, 
 		_create: function() {
 			var self  = this.element;
@@ -35,39 +35,77 @@
 				canvas.html(c);
 			});
 			
+			var isCtrl = false;
+			$(document).keyup(function (e) {
+				if(e.which == 17) isCtrl = false;
+			}).keydown(function (e) {
+				if(e.which == 17) isCtrl = true;
+				if(e.which == 66 && isCtrl == true) {
+					doBold();
+					return false;
+				}
+				if(e.which == 73 && isCtrl == true) {
+					doItalic();
+					return false;
+				}
+				if(e.which == 85 && isCtrl == true) {
+					doUnderline();
+					return false;
+				}
+			});
+			
 			if(this.options.toolbar) {
 				var toolbar = $("<div></div>").insertBefore(self).addClass("ui-widget ui-toolbar")
 					.attr({id: self.attr("id") + "_toolbar"});
-				var buttons = [{label: "Bold", style: "font-weight: bold;", name: 'bold'},
-							   {label: "Italic", style: "font-style:  italic;", name: 'italic'},
-							   {label: "Underline", style: "text-decoration: underline;", name: 'underline'},
-							   {label: "HTML", style: "float: right;", name: "html"}];
-			
+				var buttons = [
+					[
+						{label: "B", style: "font-weight: bold;", name: 'bold', title: 'Bold (Ctrl + B)'},
+						{label: "I", style: "font-style: italic;", name: 'italic', title: 'Italic (Ctrl + I)'},
+						{label: "U", style: "text-decoration: underline;", name: 'underline', title: 'Underline (Ctrl + U)'}
+					],[
+						{label: "HTML", style: "float: right;", name: 'html', title: ''}
+					]
+				];
+				
 				for(var i = 0; i < buttons.length; i++) {
-					var contents = '<input type="button" id="ui_toolbar_button_' + buttons[i].name + '" value="' + buttons[i].label + '" style="' + buttons[i].style + '" />';
-					contents    += '<span class="ui-separator" style="' + buttons[i].style + '"></span>';
+					for(var j = 0; j < buttons[i].length; j++) {
+						var contents = '<button id="ui_toolbar_button_' + buttons[i][j].name + '" style="'
+							+ buttons[i][j].style + '" title="' + buttons[i][j].title + '">' + buttons[i][j].label + '</button>';
+						
+						toolbar.html(toolbar.html() + contents);
+					}
+					var num = j - 1;
 					
-					toolbar.html(toolbar.html() + contents);
-					//toolbar.buttonset();
-				}
+					toolbar.html(toolbar.html() + '<span class="ui-separator" style="' + buttons[i][num].style + '"></span>');
+ 				}
+				toolbar.buttonset();
 				
 				$("#ui_toolbar_button_html").click(function () {
 					self.toggle();
 					canvas.toggle();
 				});
-				
 				$("#ui_toolbar_button_bold").click(function () {
-					document.execCommand('bold', false, null);
-					canvas.trigger('keyup');
+					doBold();
 				});
 				$("#ui_toolbar_button_italic").click(function () {
-					document.execCommand('italic', false, null);
-					canvas.trigger('keyup');
+					doItalic();
 				});
 				$("#ui_toolbar_button_underline").click(function () {
+					doUnderline();
+				});
+				
+				function doBold() {
+					document.execCommand('bold', false, null);
+					canvas.trigger('keyup');
+				}
+				function doItalic() {
+					document.execCommand('italic', false, null);
+					canvas.trigger('keyup');
+				}
+				function doUnderline() {
 					document.execCommand('underline', false, null);
 					canvas.trigger('keyup');
-				});
+				}
 			}
 		}, 
 		_destroy: function() {
@@ -75,4 +113,3 @@
 		}
 	});
 })(jQuery);
-
