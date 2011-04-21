@@ -73,8 +73,8 @@
 						contents += '<button id="ui_toolbar_button_' + buttons[i][j].name + '" style="'
 							+ buttons[i][j].style + '" title="' + buttons[i][j].title + '">' + buttons[i][j].label + '</button>';
 					}
-					var num = j - 1;
 					contents += '</span>';
+					var num = j - 1;
 					contents += '<span class="ui-separator" style="' + buttons[i][num].style + '"></span>';
 					
 					toolbar.html(toolbar.html() + contents);
@@ -84,6 +84,11 @@
 				$("#ui_toolbar_button_html").click(function () {
 					self.toggle();
 					canvas.toggle();
+					if($(this).children().text() == "HTML") {
+						$(this).children().text("Richtext");
+					} else {
+						$(this).children().text("HTML");
+					}
 				});
 				$("#ui_toolbar_button_bold").click(function () {
 					doBold();
@@ -98,14 +103,17 @@
 				function doBold() {
 					document.execCommand('bold', false, null);
 					canvas.trigger('keyup');
+					canvas.focus();
 				}
 				function doItalic() {
 					document.execCommand('italic', false, null);
 					canvas.trigger('keyup');
+					canvas.focus();
 				}
 				function doUnderline() {
 					document.execCommand('underline', false, null);
 					canvas.trigger('keyup');
+					canvas.focus();
 				}
 			}
 		}, 
