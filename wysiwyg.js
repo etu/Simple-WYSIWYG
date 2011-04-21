@@ -115,17 +115,17 @@
 					doUnderline();
 				});
 				$('#ui_toolbar_button_int_url').click(function () {
-					var int_url   = prompt('Enter Internal URL:');
-					if(int_url != null) {
-						var int_label = prompt('Enter URL label:');
-						insertUrl(int_url, int_label, '/');
+					var url = prompt('Enter Internal URL:');
+					if(url != null) {
+						var label = prompt('Enter URL label:');
+						insertUrl(url, label, '/');
 					}
 				});
 				$('#ui_toolbar_button_ext_url').click(function () {
-					var ext_url   = prompt('Enter External URL:');
-					if(int_url != null) {
-						var ext_label = prompt('Enter URL label:');
-						insertUrl(ext_url, ext_label, 'http://');
+					var url = prompt('Enter External URL:');
+					if(url != null) {
+						var label = prompt('Enter URL label:');
+						insertUrl(url, label, 'http://');
 					}
 				});
 				
@@ -144,11 +144,11 @@
 					canvas.trigger('keyup');
 					canvas.focus();
 				}
-				function insertUrl(location, label, prefix) {
+				function insertUrl(target, label, prefix) {
 					if(label == null)
 						label = 'Click here';
 					
-					var url = '.<a href="' + prefix + location + '">' + label + '</a>.';
+					var url = '.<a href="' + prefix + target + '">' + label + '</a>.';
 					self.text(self.text() + url);
 					self.trigger('keyup');
 				}
