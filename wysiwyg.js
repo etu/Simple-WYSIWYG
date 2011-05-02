@@ -104,15 +104,19 @@
 					} else {
 						$(this).children().text('HTML');
 					}
+					return false;
 				});
 				$('#ui_toolbar_button_bold').click(function () {
 					doBold();
+					return false;
 				});
 				$('#ui_toolbar_button_italic').click(function () {
 					doItalic();
+					return false;
 				});
 				$('#ui_toolbar_button_underline').click(function () {
 					doUnderline();
+					return false;
 				});
 				$('#ui_toolbar_button_int_url').click(function () {
 					var url = prompt('Enter Internal URL:');
@@ -120,6 +124,7 @@
 						var label = prompt('Enter URL label:');
 						insertUrl(url, label, '/');
 					}
+					return false;
 				});
 				$('#ui_toolbar_button_ext_url').click(function () {
 					var url = prompt('Enter External URL:');
@@ -127,6 +132,7 @@
 						var label = prompt('Enter URL label:');
 						insertUrl(url, label, 'http://');
 					}
+					return false;
 				});
 				
 				function doBold() {
