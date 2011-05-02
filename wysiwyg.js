@@ -75,7 +75,7 @@
 						{label: 'I', style: 'font-style: italic;', name: 'italic', title: 'Italic (Ctrl + I)'},
 						{label: 'U', style: 'text-decoration: underline;', name: 'underline', title: 'Underline (Ctrl + U)'}
 					],[
-						{label: 'HTML', style: 'float: right;', name: 'html', title: 'Switch too...'}
+						{label: 'HTML', style: 'float: right;', name: 'html', title: 'Switch too Richtext'}
 					],[
 						{label: 'Internal URL', style: '', name: 'int_url', title: 'Internal URL'},
 						{label: 'External URL', style: '', name: 'ext_url', title: 'External URL'},
@@ -101,8 +101,10 @@
 					canvas.toggle();
 					if($(this).children().text() == 'HTML') {
 						$(this).children().text('Richtext');
+						$(this).attr('title', 'Switch too HTML');
 					} else {
 						$(this).children().text('HTML');
+						$(this).attr('title', 'Switch too Richtext');
 					}
 					return false;
 				});
