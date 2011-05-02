@@ -49,7 +49,7 @@
 			
 			var isCtrl = false;
 			$(document).keyup(function (e) {
-				if(e.which == 17) isCtrl = false;
+				isCtrl = false;
 			}).keydown(function (e) {
 				if(e.which == 17) isCtrl = true;
 				if(e.which == 66 && isCtrl == true) {
