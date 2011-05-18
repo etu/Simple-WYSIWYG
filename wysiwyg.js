@@ -77,8 +77,10 @@
 					],[
 						{label: 'HTML', style: 'float: right;', name: 'html', title: 'Switch too Richtext'}
 					],[
+						{label: '&bull;', style: '', name: 'bullet', title: 'Bullet'}
+					],[
 						{label: 'Internal URL', style: '', name: 'int_url', title: 'Internal URL'},
-						{label: 'External URL', style: '', name: 'ext_url', title: 'External URL'},
+						{label: 'External URL', style: '', name: 'ext_url', title: 'External URL'}
 					]
 				];
 				
@@ -134,6 +136,10 @@
 						var label = prompt('Enter URL label:');
 						insertUrl(url, label, 'http://');
 					}
+					return false;
+				});
+				$('#ui_toolbar_button_bullet').click(function () {
+					canvas.html(canvas.html() + '<br />&bull;&nbsp;');
 					return false;
 				});
 				
