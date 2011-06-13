@@ -167,7 +167,8 @@
 					self.trigger('keyup');
 				}
 			}
-		}, 
+			self.trigger('keyup');
+		},
 		_destroy: function() {
 			$.Widget.prototype.destroy.call(this);
 		}
